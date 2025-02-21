@@ -15,6 +15,9 @@ TagManager:
   - Ground
   - JohnLemon
   - GameManager
+  - TankPlayer
+  - EnemyShell
+  - PlayerShell
   layers:
   - Default
   - TransparentFX

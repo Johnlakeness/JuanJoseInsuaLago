@@ -26,15 +26,16 @@ public class TankMovement : MonoBehaviour
 
     private void Awake()
     {
-        
+
+        // Bloquea cursor
+        Cursor.lockState = CursorLockMode.Locked;
+
+        // Asigna componente "Rigidbody"
         _rb = GetComponent<Rigidbody>();
+
+        // Asigna componete "AudioSource"
         _audioSource = GetComponent<AudioSource>();
 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -48,7 +49,7 @@ public class TankMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         InputsPlayer();
         AudioPlayer();
 
@@ -57,6 +58,7 @@ public class TankMovement : MonoBehaviour
     private void InputsPlayer()
     {
 
+        // Asignación de valor a teclas de movimiento horizontal y vertical
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
 
@@ -65,7 +67,10 @@ public class TankMovement : MonoBehaviour
     private void Move()
     {
 
+        // Valor del movimiento asignado a "Vector3"
         Vector3 direction = transform.forward * _vertical * _speed * Time.deltaTime;
+
+        // Movimiento por "Rigidbody"
         _rb.MovePosition(transform.position + direction);
 
     }
@@ -74,7 +79,11 @@ public class TankMovement : MonoBehaviour
     {
 
         //float turn = _horizontal * _turnSpeed * Time.deltaTime;
+
+        // Valor de rotación asignado a "Quaternion"
         Quaternion turnRotation = Quaternion.Euler(0.0f, _horizontal, 0.0f);
+
+        // Rotación por "Rigidbody"
         _rb.MoveRotation(transform.rotation * turnRotation);
 
     }
@@ -89,20 +98,26 @@ public class TankMovement : MonoBehaviour
             if (_audioSource.clip != _drivingClip)
             {
 
+                // Asigna clip de audio a "AudioSource"
                 _audioSource.clip = _drivingClip;
+
+                // Reproduce clip de audio
                 _audioSource.Play();
 
             }
 
         }
+
         // El tanque está parado
         else
         {
 
             if (_audioSource.clip != _idleClip)
             {
-
+                // Asigna clip de audio a "AudioSource"
                 _audioSource.clip = _idleClip;
+
+                // Reproduce clip de audio
                 _audioSource.Play();
 
             }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JohnLemon.unity
     guid: 932e1bb99d5d935459e817eb2d246e01
+  - enabled: 1
+    path: Assets/Scenes/Tanks.unity
+    guid: f30a57022322a3245a59b1ba95ece339
   m_configObjects: {}
